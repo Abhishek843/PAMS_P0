@@ -1,0 +1,55 @@
+/*  
+	Author:Abhishek Choure
+*/
+
+
+USE PAMS_PROJECT;
+DROP TABLE if exists PATIENT;
+CREATE TABLE PATIENT(
+Customer_name varchar(50), 
+email  vaRCHAR(50), 
+phone VARCHAR(20),
+address TEXT, 
+date_of_birth varchar(30), 
+age INT,
+password varchar(15),
+identity_proof varchar(25),
+preferred_login_id varchar(50),
+constraint primary key (preferred_login_id)
+);
+DROP TABLE if exists DOCTOR;
+CREATE TABLE DOCTOR
+(
+   DOCTOR_ID INT auto_increment PRIMARY KEY ,
+   DOCTOR_NAME TEXT NOT NULL,
+   DOCTOR_EXPERIENCE INT,
+   DOCTOR_SLOTS INT NOT NULL,
+   DOCTOR_EDUCATION VARCHAR(10),
+   DOCTOR_CHARGES DOUBLE NOT NULL, 
+	TYPE_OF_DOCTOR TEXT NOT NULL
+) auto_increment=10001;
+DROP TABLE if exists APPOINTMENT_DETAILS;
+CREATE TABLE APPOINTMENT_DETAILS
+(
+   APPOINTMENT_ID INT PRIMARY KEY DEFAULT(0),
+   preferred_login_id VARCHAR(50) ,
+   DOCTOR_ID INT ,
+   PATIENT_AGE TINYINT NOT NULL,
+   TOTAL_FEE DOUBLE NOT NULL,
+   APPOINTMENT_DATE DATE,
+   STATUS VARCHAR(10),
+   CANCELLATION_ID VARCHAR(10) DEFAULT(0),
+   CANCELLATION_DATE date,
+   CANCELLATION_REASON text,
+   FOREIGN KEY(preferred_login_id) REFERENCES PATIENT(preferred_login_id),
+   FOREIGN KEY(doctor_ID) REFERENCES doctor(doctor_ID)
+   )auto_increment=10001;
+
+CREATE TABLE RESTOCK
+(
+PRODUCT_ID INT,
+THRESHOLD_LEVEL INT,
+FOREIGN KEY(PRODUCT_ID) REFERENCES PRODUCT(PRODUCT_ID)
+);
+select * from pams_project;
+    

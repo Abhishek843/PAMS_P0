@@ -1,0 +1,8 @@
+SELECT * FROM DOCTOR;
+
+SELECT DOCTOR_ID FROM APPOINTMENT_DETAILS WHERE APPOINTMENT_ID = 10002;
+
+SELECT * FROM appointment_details;
+SELECT * FROM pams_project.doctor;
+SELECT * FROM pams_project.patient;
+
